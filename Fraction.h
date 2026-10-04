@@ -32,6 +32,12 @@ public:
 	friend Fraction operator/(int left, const Fraction& right);
 
 
+	// операторы сравнения
+	bool operator==(const Fraction& right) const;
+
+	std::strong_ordering operator<=>(const Fraction& right) const;
+
+
 	friend std::ostream& operator<<(std::ostream& out, const Fraction& obj);
 	friend std::istream& operator>>(std::istream& in, Fraction& obj);
 

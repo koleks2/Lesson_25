@@ -66,8 +66,6 @@ Fraction operator+(int left, const Fraction& right) {
 	return right + left;
 }
 
-
-
 Fraction Fraction::operator-(const Fraction& right) const {
 	int num = this->numerator * right.denominator - right.numerator * this->denominator;
 	int denom = this->denominator * right.denominator;
@@ -89,8 +87,6 @@ Fraction operator-(int left, const Fraction& right) {
 	return Fraction(num, denom);
 }
 
-
-
 Fraction Fraction::operator*(const Fraction& right) const {
 	int num = this->numerator * right.numerator;
 	int denom = this->denominator * right.denominator;
@@ -108,8 +104,6 @@ Fraction Fraction::operator*(int right) const {
 Fraction operator*(int left, const Fraction& right) {
 	return right * left;
 }
-
-
 
 
 Fraction Fraction::operator/(const Fraction& right) const {
@@ -133,9 +127,13 @@ Fraction operator/(int left, const Fraction& right) {
 	return Fraction(num, denom);
 }
 
+bool Fraction::operator==(const Fraction& right) const {
+	return (this->numerator * right.denominator == this->denominator * right.numerator);
+}
 
-
-
+std::strong_ordering Fraction::operator<=>(const Fraction& right) const {
+	return (this->numerator * right.denominator <=> this->denominator * right.numerator);
+}
 
 
 std::ostream& operator<<(std::ostream& out, const Fraction& obj) {
